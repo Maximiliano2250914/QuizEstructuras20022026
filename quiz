@@ -1,0 +1,169 @@
+contClientes = 0
+cent = "k"; cent2 = 4; cent2_1 = 0; cent2_2 = 0
+# Clase Nodo
+class Nodo:
+	def __init__(self, data):
+		self.data = data
+		self.siguiente = None
+
+class ListaNombres:
+	def __init__(self):
+		self.cabeza = None
+		
+  # Agregar al inicio
+	def agregarInicioNombre(self, data):
+		nuevo_nodo = Nodo(data)
+		if self.cabeza is None:
+			self.cabeza = nuevo_nodo
+			return
+		else:
+			nuevo_nodo.siguiente = self.cabeza
+
+			self.cabeza = nuevo_nodo
+		
+# CLase Listas enlazada simple
+class ListaCedulas:
+	def __init__(self):
+		self.cabeza = None
+  
+# Agregar al inicio
+	def agregarInicioCedula(self, data):
+		nuevo_nodo = Nodo(data)
+		if self.cabeza is None:
+			self.cabeza = nuevo_nodo
+			return
+		else:
+			nuevo_nodo.siguiente = self.cabeza
+
+			self.cabeza = nuevo_nodo
+			
+  def encontrarCedula(self):
+    actual = self.cabeza  
+        
+    cedulaNecesitada = input("Cual es la cedula que va a buscar?: ")
+        
+    if actual is None:
+          print("La lista esta vacia?")
+          return
+        
+    while actual is not None:
+          actual = actual.siguiente  
+
+    if actual == cedulaNecesitada:
+					print
+			
+
+class ListaHabitacionesDisponibles:
+	def __init__(self):
+		self.cabeza = None
+		
+# Agregar al inicio
+	def agregarInicioHabitacionesDisponibles(self, data):
+		nuevo_nodo = Nodo(data)
+		if self.cabeza is None:
+			self.cabeza = nuevo_nodo
+			return
+		else:
+			nuevo_nodo.siguiente = self.cabeza
+
+			self.cabeza = nuevo_nodo
+			
+
+class ListaOrdenLlegada:
+	def __init__(self):
+		self.cabeza = None
+		
+# Agregar al inicio
+	def agregarInicioOrdenLlegada(self, data):
+		nuevo_nodo = Nodo(data)
+		if self.cabeza is None:
+			self.cabeza = nuevo_nodo
+			return
+		else:
+			nuevo_nodo.siguiente = self.cabeza
+
+			self.cabeza = nuevo_nodo
+			
+  def encontrarOrdenLlegada(self):
+    actual = self.cabeza  
+        
+    ordenNecesitado = input("Cual es el orden de llegada que va a buscar?: ")
+        
+    if actual is None:
+      print("La lista esta vacia?")
+      return
+        
+    while actual is not None:
+      actual = actual.siguiente
+
+      if actual == ordenNecesitado:
+				print("Encontrado")  
+            
+			
+
+class ListaHabitacionesOcupadas:
+	def __init__(self):
+		self.cabeza = None
+
+# Agregar al inicio
+	def agregarInicioHabitacionesOcupadas(self, data):
+		nuevo_nodo = Nodo(data)
+		if self.cabeza is None:
+			self.cabeza = nuevo_nodo
+			return
+		else:
+			nuevo_nodo.siguiente = self.cabeza
+
+			self.cabeza = nuevo_nodo
+			
+			
+while cent != "n":
+	cent = input("Va a añadir cliente? (s/n): ")
+	nombreCliente = input("Ingrese el nombre del cliente:")
+	ListaNombres.agregarInicioNombre(nombreCliente)
+	
+	cedulaCliente = int(input("Ingrese la cedula del cliente: "))
+	ListaCedulas.agregarInicioCedula(cedulaCliente)
+	
+	contClientes += 1
+	ListaOrdenLlegada.agregarInicioOrdenLlegada(contClientes)
+	numHabitacion = int(input("Ingrese la habitacion que se le dara al cliente: "))
+	ListaHabitacionesOcupadas.agregarInicioHabitacionesOcupadas(numHabitacion)
+	
+while cent2 != 3:
+	print("1. Consultas vigentes por huesped")
+	print("2. Consulta de habitaciones")
+	print("3. Salir")
+	cent2 = int(input("Ingrese el numero deseado: "))
+
+  if cent2 == 1:
+    while cent2_1 != 3:
+      print("1. Individual")
+      print("2. Total")
+      print("3. Salir")
+      cent2_1 = int(input("Ingrese el numero deseado: "))
+			
+      if cent2_1 == 2:
+				cual = input("Buscar cedula (c) u orden de llegada (o)?: ")
+				if cual == "c":
+          cedulaCliente = int(input("Ingrese la cedula que busca: "))
+          ListaCedulas.encontrarCedula(cedulaCliente)
+        if cual == "o":
+          ordenCliente = int(input("Ingrese el numero del cliente segur orden de llegada inverso (1 es el ultimo, 2 el penultimo, etc): "))
+					ListaOrdenLlegada.encontrarOrdenLlegada(ordenCliente)
+					
+      if cent2_1 == 1:
+				print("Aun esta en desarrollo, que pena")
+
+  if cent2 == 2:
+    while cent2_2 != 3:
+			print("1. Lista de habitaciones disponibles")
+			print("2. Lista de habitaciones ocupadas")
+			print("3. Salir")
+			cent2_2 = int(input("Ingrese el numero deseado: "))
+			
+			
+      if cent2_2 == 1:
+        print(ListaHabitacionesDisponibles)
+			if cent2_2 == 2:
+				print(ListaHabitacionesOcupadas)
